@@ -1,0 +1,6 @@
+#Wait Config
+# You can use ALL to wait for every plugin, or Specify a single plugin name
+wait-for: ALL
+
+#Message sent when player tries to login
+kick-message: "&cSorry, please login in one second"

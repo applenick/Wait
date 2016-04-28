@@ -1,0 +1,5 @@
+name: Wait
+main: com.applenick.Wait.Wait
+version: ${project.version}
+author: AppleNick
+load: STARTUP
