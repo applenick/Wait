@@ -34,11 +34,14 @@ public class Wait extends JavaPlugin implements Listener {
 			waitForPlugin = this.getConfig().getString("wait-for");
 		}	
 		
+		
 		//Get the kick message
 		kickMessage = ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("kick-message"));
 				
 		//Register Listener
 		this.getServer().getPluginManager().registerEvents(this, this);
+		
+		this.getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GOLD + "Waiting for " + (waitForAll ? ChatColor.GREEN + "ALL" : ChatColor.GREEN + waitForPlugin));
 		
 		if(waitForAll){
 			//Schedule the server to allow login after everything is loaded.
