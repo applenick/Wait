@@ -44,23 +44,31 @@ public class Wait extends JavaPlugin implements Listener {
 		this.getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GOLD + "Waiting for " + (waitForAll ? ChatColor.GREEN + "ALL" : ChatColor.GREEN + waitForPlugin));
 		
 		if(waitForAll){
-			//Schedule the server to allow login after everything is loaded.
+			toggleLogin(false);
+		}
+	}
+	
+	private void toggleLogin(boolean instant){
+		if(!(instant)){
 			this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
 				public void run() {
 					canLogin = true;
 					getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
 				}
 			});
+		}else{
+			canLogin = true;
+			getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
 		}
 	}
+	
 	
 	@EventHandler
 	public void onPluginEnable(PluginEnableEvent event){
 		//Enable logins after the specific plugin is enabled.
 		if(!(waitForAll)){
 			if(event.getPlugin().getName().equalsIgnoreCase(waitForPlugin)){
-				canLogin = true;
-				getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
+				toggleLogin(true);
 			}
 		}
 	}
