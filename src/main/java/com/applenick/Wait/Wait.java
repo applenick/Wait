@@ -27,7 +27,7 @@ public class Wait extends JavaPlugin implements Listener {
 		this.saveDefaultConfig();
 		
 		//Check if blocking All
-		waitForAll = this.getConfig().getString("wait-for").equalsIgnoreCase("waitForAll");
+		waitForAll = this.getConfig().getString("wait-for").equalsIgnoreCase("ALL");
 		
 		//Get name of single plugin if in single mode
 		if(!(waitForAll)){
@@ -53,12 +53,12 @@ public class Wait extends JavaPlugin implements Listener {
 			this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
 				public void run() {
 					canLogin = true;
-					getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
+					console(ChatColor.GREEN + "Players can now login");
 				}
 			});
 		}else{
 			canLogin = true;
-			getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
+			console(ChatColor.GREEN + "Players can now login");
 		}
 	}
 	
@@ -83,4 +83,7 @@ public class Wait extends JavaPlugin implements Listener {
 		}
 	}
 	
+	private void console(String message){
+		getServer().getConsoleSender().sendMessage(PREFIX + message);
+	}
 }
