@@ -1,5 +1,6 @@
 package com.applenick.Wait;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -48,7 +49,7 @@ public class Wait extends JavaPlugin implements Listener {
 			this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
 				public void run() {
 					canLogin = true;
-					getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
+					Bukkit.getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
 				}
 			}, 0L);
 		}
