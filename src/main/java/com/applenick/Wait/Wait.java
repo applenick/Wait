@@ -1,6 +1,5 @@
 package com.applenick.Wait;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,11 +14,11 @@ Copyright © 2016 , AppleNick, All rights reserved.
  *************************************************/
 public class Wait extends JavaPlugin implements Listener {
 	
-	private String PREFIX = ChatColor.GRAY + "[" + ChatColor.DARK_RED + "Wait" + ChatColor.GRAY + "]";
+	private String PREFIX = ChatColor.GRAY + "[" + ChatColor.DARK_RED + "Wait" + ChatColor.GRAY + "] ";
 	
 	private boolean canLogin = false; // If players can login
-	private boolean waitForAll = false; // If the server should wait for all plugins to load
-	private String waitForPlugin = "none"; //The name of a specific plugin to wait for
+	private boolean waitForAll; // If the server should wait for all plugins to load
+	private String waitForPlugin; //The name of a specific plugin to wait for
 	private String kickMessage;// The message sent when a player tries to login
 	
 	@Override
@@ -49,9 +48,9 @@ public class Wait extends JavaPlugin implements Listener {
 			this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
 				public void run() {
 					canLogin = true;
-					Bukkit.getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
+					getServer().getConsoleSender().sendMessage(PREFIX + ChatColor.GREEN + "Players can now login");
 				}
-			}, 0L);
+			});
 		}
 	}
 	
